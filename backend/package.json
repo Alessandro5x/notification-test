@@ -1,0 +1,31 @@
+{
+  "name": "notification-test",
+  "version": "1.0.0",
+  "description": "Notification system that has the ability to receive a message and depending on  the category and subscribers, notify these users in the channels they are registered.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alessandro5x/notification-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alessandro5x/notification-test/issues"
+  },
+  "homepage": "https://github.com/Alessandro5x/notification-test#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}

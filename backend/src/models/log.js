@@ -1,15 +1,11 @@
-const Log = require('../models/log');
+const mongoose = require('mongoose');
 
-const saveLog = async (logData) => {
-    const log = new Log(logData);
-    await log.save();
-};
+const logSchema = new mongoose.Schema({
+    user: Object,
+    category: String,
+    message: String,
+    channel: String,
+    createdAt: { type: Date, default: Date.now }
+});
 
-const getAllLogs = async () => {
-    return await Log.find().sort({ createdAt: -1 });
-};
-
-module.exports = {
-    saveLog,
-    getAllLogs,
-};
+module.exports = mongoose.model('Log', logSchema);
