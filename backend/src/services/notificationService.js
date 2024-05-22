@@ -5,6 +5,7 @@ const logRepository = require('../repositories/logRepository');
 const mockUsers = require('../utils/mockUsers');
 
 const sendNotification = async (category, message) => {
+    console.log('Starting to send notification');
     for (const user of mockUsers) {
         if (user.subscribed.includes(category)) {
             for (const channel of user.channels) {
@@ -19,12 +20,17 @@ const sendNotification = async (category, message) => {
                     case 'SMS':
                         notificationService = new SMSService();
                         break;
+                    default:
+                        console.error('Unknown channel:', channel);
+                        continue;
                 }
+                console.log(`Sending ${channel} to user ${user.name}`);
                 await notificationService.send(user, message);
                 await logRepository.saveLog({ user, category, message, channel, timestamp: new Date() });
             }
         }
     }
+    console.log('Finished sending notification');
 };
 
 module.exports = {

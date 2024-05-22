@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/notifications';
+const API_URL = '/api/notifications';
 
 export const sendNotification = async (category, message) => {
   const response = await axios.post(`${API_URL}/send`, { category, message });
